@@ -30,6 +30,12 @@ songs.get('content').pushObject(blackDog);
 songs.get('content').pushObject(yellowLedbetter);
 songs.get('content').pushObject(pretender);
 
+window.songs = songs;
+var alwaysWaiting = Song.create({ title: 'Always Waiting', band: 'Kaya Project',
+rating: 5
+});
+window.newSong = alwaysWaiting;
+
 export default Ember.Controller.extend({
   songs: songs
 });
