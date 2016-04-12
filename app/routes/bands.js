@@ -2,6 +2,15 @@
 import Ember from 'ember';
 var Band = Ember.Object.extend({
   name: '',
+  language: '',
+  slug: Ember.computed('name', function() {
+    return this.get('name').dasherize();
+  }),
+  site: Ember.computed('slug', 'language', function() {
+    console.log('Recomputing site');
+    return 'http://bands.com/' + this.get('slug') + '.' +
+      this.get('language');
+  })
 });
 
 var Song = Ember.Object.extend({
@@ -10,8 +19,10 @@ var Song = Ember.Object.extend({
   band: ''
 });
 
-var blackDog = Song.create({ title: 'Black Dog',
-band: 'Led Zeppelin', rating: 3
+var blackDog = Song.create({
+  title: 'Black Dog',
+  band: 'Led Zeppelin',
+  rating: 3
 });
 var yellowLedbetter = Song.create({
   title: 'Yellow Ledbetter',
