@@ -29,9 +29,11 @@ export default Ember.Component.extend({
 
   actions: {
     set: function (newRating) {
-      this.sendAction('setAction', {
+      this.get('on-click') ({
+      // this.sendAction('setAction', {
         item: this.get('item'),
         rating: newRating
+      });
     }
   }
 
