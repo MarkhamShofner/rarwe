@@ -26,4 +26,12 @@ export default Ember.Component.extend({
     return starsData;
   },
 
+  actions: {
+    set: function (newRating) {
+      this.sendAction('setAction', {
+        item: this.get('item'),
+        rating: newRating
+    }
+  }
+
 });
