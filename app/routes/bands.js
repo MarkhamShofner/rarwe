@@ -4,18 +4,18 @@
 import Ember from 'ember';
 import Band from '../models/band';
 
-var Band = Ember.Object.extend({
-  name: '',
-  language: '',
-  slug: Ember.computed('name', function() {
-    return this.get('name').dasherize();
-  }),
-  site: Ember.computed('slug', 'language', function() {
-    console.log('Recomputing site');
-    return 'http://bands.com/' + this.get('slug') + '.' +
-      this.get('language');
-  })
-});
+// var Band = Ember.Object.extend({
+//   name: '',
+//   language: '',
+//   slug: Ember.computed('name', function() {
+//     return this.get('name').dasherize();
+//   }),
+//   site: Ember.computed('slug', 'language', function() {
+//     console.log('Recomputing site');
+//     return 'http://bands.com/' + this.get('slug') + '.' +
+//       this.get('language');
+//   })
+// });
 
 var Song = Ember.Object.extend({
   title: '',
@@ -86,6 +86,7 @@ export default Ember.Route.extend({
       });
       bands.get('content').pushObject(band);
       this.get('controller').set('name', '');
+      // this.transitionTo('bands.band.songs', band);
     }
   }
 });
