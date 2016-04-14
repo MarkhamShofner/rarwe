@@ -8,30 +8,33 @@ html, body {
 .push-down-m {
   margin-top: 50px;
 }
-
 .page-header a h1 {
   color: #555;
 }
-
 .navbar-default .navbar-nav > li > a.active, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #555555;
   background-color: #e7e7e7;
 }
-
 .songs .rating {
   color: #aaa;
   font-size: 1.1em;
 }
-.empty-list { min-height: 100px; text-align: center;
+.empty-list {
+  min-height: 100px;
+  text-align: center;
 }
-.empty-list .empty-message { display: inline-block; color: #555;
-line-height: 100px;
+.empty-list .empty-message {
+  display: inline-block;
+  color: #555;
+  line-height: 100px;
 }
-.band-link .pointer { float: right; display: none;
+.band-link .pointer {
+  float: right;
+  display: none;
 }
-.band-link.active .pointer { display: block;
+.band-link.active .pointer {
+  display: block;
 }
-
 .new-band {
   width: 82%;
 }
@@ -39,11 +42,28 @@ line-height: 100px;
   float: right;
   padding: 3px 10px;
 }
-.new-song { width: 50%;
+.new-song {
+  width: 50%;
 }
-.new-song-button { margin-left: 20px;
+.new-song-button {
+  margin-left: 20px;
 }
-
 .rating-panel {
   float: right;
+}
+.page-header a:hover {
+  text-decoration: none;
+}
+.band-info {
+  margin-top: 20px;
+}
+.nav-tabs > li > a.active, .nav-tabs > li > a.active:hover, .nav-tabs > li > a.active:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.band-description-header {
+  margin-bottom: 20px;
 }
