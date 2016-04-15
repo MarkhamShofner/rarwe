@@ -8,7 +8,12 @@ export default Ember.Route.extend({
     return bands.get('content').findBy('slug', params.slug); // params.slug is now 'pearl-jam'
   },
 
-  afterModel:{
-
+  afterModel: function (band){
+    var description = band.get('description');
+    if (Ember.isEmpty(description)) {
+      this.transitionTo('bands.band.songs')
+    } else {
+      this.transitionTo('bands.band.details')
+    }
   },
 });
