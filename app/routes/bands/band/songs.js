@@ -9,13 +9,14 @@ export default Ember.Route.extend({
     createSong: function() {
       var controller = this.get('controller');
       var band = this.modelFor('bands.band');
-      var title = controller.get('title');
-      var song = Song.create({
-        title: title,
+
+      var song = this.store.createRecord('song', {
+        title: controller.get('title'),
         band: band
       });
-      band.get('songs').pushObject(song);
-      controller.set('title', '');
+      song.save().then(function(){
+        controller.set('title','');
+      });
     },
     updateRating: function(params) {
       var song = params.item,
