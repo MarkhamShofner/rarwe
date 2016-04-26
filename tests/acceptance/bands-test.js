@@ -8,6 +8,7 @@ moduleForAcceptance('Acceptance | bands');
 
 var server;
 
+// TEST - visiting /bands
 test('visiting /bands', function(assert) {
   server = new Pretender(function() {
     this.get('/bands', function() {
@@ -43,7 +44,7 @@ test('visiting /bands', function(assert) {
   });
 });
 
-
+// TEST - create a new band
 test('Create a new band', function(assert) {
   server = new Pretender(function() {
     this.get('bands', function() {
