@@ -86,3 +86,17 @@ test('Create a new band', function(assert) {
       'The Songs tab is active');
   });
 });
+
+// Test - create a new song
+test('creating a song (in two steps)', function (assert) {
+
+  visit('/bands');
+  click('.band-link:first');
+  click('');
+  fillIn('.new-song', 'test');
+  click('.new-song-button');
+
+  andThen(function() {
+    assert.equal(find('.song').length, 1, 'new song is added');
+  });
+});
