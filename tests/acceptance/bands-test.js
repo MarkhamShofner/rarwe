@@ -88,15 +88,54 @@ test('Create a new band', function(assert) {
 });
 
 // Test - create a new song
-test('creating a song (in two steps)', function (assert) {
+test('creating a song (in two steps)', function(assert) {
 
-  visit('/bands');
-  click('.band-link:first');
-  click('');
-  fillIn('.new-song', 'test');
-  click('.new-song-button');
+  server = new Pretender(function() {
+    this.get('bands', function() {
+      var response = {
+        data: [{
+          id: 1,
+          type: 'bands',
+          attributes: {
+            name: 'Radiohead'
+          }
+        }]
+      };
+      return [200, {
+        'Content-Type': 'application/vnd.api+json'
+      }, JSON.stringify(response)];
+    });
+    this.post('/songs', function() {
+      var response = {
+        data: [{
+          id: 1,
+          type: 'songs',
+          attributes: {
+            name: 'Killer Cars'
+          }
+        }]
+      };
+      return [200, {
+        'Content-Type': 'application/vnd.api+json'
+      }, JSON.stringify(response)];
+    });
+    this.get('/bands/1/songs', () => {
+      return [200, {
+        'Content-Type': 'application/vnd.api+json'
+      }, JSON.stringify({
+        data: []
+      })];
+    });
+  });
+
+  visit('/');
+  click('.band-link:contains("Radiohead")');
+  click('a:contains("create one")');
+  fillIn('.new-song', 'Killer Cars');
+  // click('.new-song-button');
+  triggerEvent('.new-song-form', 'submit');
 
   andThen(function() {
-    assert.equal(find('.song').length, 1, 'new song is added');
+    assert.equal(find('.songs .song:contains("Killer Cars")').length, 1, 'create new song and that song is added to the list');
   });
 });
