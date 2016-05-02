@@ -7,6 +7,7 @@ import Pretender from 'pretender';
 moduleForAcceptance('Acceptance | bands');
 
 var server;
+
 // TEST - visiting /bands
 test('visiting /bands', function(assert) {
   server = new Pretender(function() {
