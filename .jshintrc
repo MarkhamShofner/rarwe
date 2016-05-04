@@ -2,7 +2,11 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "currentRouteName",
+    "assertTrimmedText",
+    "assertLength",
+    "assertElement"
   ],
   "browser": true,
   "boss": true,
